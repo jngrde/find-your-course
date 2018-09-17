@@ -2,6 +2,7 @@
   "name": "bildungsmelder",
   "version": "0.1.0",
   "private": true,
+  "license": "UNLICENSED",
   "dependencies": {
     "cypress": "^3.1.0",
     "prop-types": "^15.6.2",
