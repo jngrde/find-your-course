@@ -5,6 +5,7 @@
   "license": "UNLICENSED",
   "dependencies": {
     "cypress": "^3.1.0",
+    "feather-icons": "^4.7.3",
     "prop-types": "^15.6.2",
     "react": "^16.5.1",
     "react-app-rewire-styled-components": "^3.0.2",

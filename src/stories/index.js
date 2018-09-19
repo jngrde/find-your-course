@@ -1,19 +1,36 @@
-import React from 'react';
+/* global module */
 
-import { storiesOf } from '@storybook/react';
-import { action } from '@storybook/addon-actions';
-import { linkTo } from '@storybook/addon-links';
+import React from 'react'
+import styled from 'styled-components'
+import { storiesOf } from '@storybook/react'
 
-import { Button, Welcome } from '@storybook/react/demo';
+import { withKnobs, text } from '@storybook/addon-knobs/react'
 
-storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
+import CourseCard from '../components/CourseCard'
 
-storiesOf('Button', module)
-  .add('with text', () => <Button onClick={action('clicked')}>Hello Button</Button>)
-  .add('with some emoji', () => (
-    <Button onClick={action('clicked')}>
-      <span role="img" aria-label="so cool">
-        😀 😎 👍 💯
-      </span>
-    </Button>
-  ));
+const Wrapper = styled.section`
+  width: ${props => (props.width ? props.width : '360')}px;
+  margin: 0 auto;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  padding: 10px;
+`
+
+storiesOf('ToggleCard', module)
+  .addDecorator(withKnobs)
+  .add('default', () => (
+    <Wrapper>
+      <CourseCard
+        course={{
+          title: text('title', 'Bootcamp Web Development'),
+          provider: text('provider', 'neuefische'),
+          duration: text('duration', 'Drei Monate'),
+          times: text('times', '24/7'),
+          costs: text('costs', '8000 Euronen'),
+          teacher: text('teacher', 'Jerry'),
+          text: text('text', ' Gutes Ding'),
+          place: text('place', 'Bahrenfeld, Hamburg'),
+        }}
+      />
+    </Wrapper>
+  ))
