@@ -4,10 +4,18 @@ import CardHeader from './CardHeader'
 import PropTypes from 'prop-types'
 
 const CardWrapper = styled.section`
+  max-width: 20rem;
   border: solid 0.03rem;
-  border-radius: 4px;
-  margin-bottom: 10px;
+  margin-bottom: 2rem;
   padding: 2rem;
+  background: white;
+  border-radius: 5px;
+
+  @media screen and (max-width: 400px) {
+    max-width: 400px;
+    padding: 0.5rem;
+    margin: 0.5rem 0.2rem;
+  }
 `
 
 export default class ToggleCard extends Component {
@@ -16,8 +24,9 @@ export default class ToggleCard extends Component {
   }
 
   static propTypes = {
+    overHeadline: PropTypes.string,
     title: PropTypes.string,
-    description: PropTypes.string,
+    description: PropTypes.any,
     children: PropTypes.any,
     bookmarked: PropTypes.bool,
     onClick: PropTypes.func,
@@ -27,10 +36,11 @@ export default class ToggleCard extends Component {
     this.setState({ showDetails: !this.state.showDetails })
   }
   render() {
-    const { title, description, bookmarked, onClick } = this.props
+    const { overHeadline, title, description, bookmarked, onClick } = this.props
     return (
       <CardWrapper>
         <CardHeader
+          overHeadline={overHeadline}
           title={title}
           description={description}
           onToggleDetailedView={this.toggleDetailedView}

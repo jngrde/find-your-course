@@ -2,7 +2,16 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-const StyledCardDetails = styled.div``
+const StyledCardDetails = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 1.5rem;
+
+  > * {
+    margin-bottom: 1rem;
+  }
+`
+const StyledText = styled.span``
 
 export default class CardHeader extends Component {
   static propTypes = {
@@ -15,10 +24,10 @@ export default class CardHeader extends Component {
     const { costs, teacher, place, text } = this.props
     return (
       <StyledCardDetails data-cy="cardDetails">
-        <div>{costs}</div>
-        <div>{teacher}</div>
-        <div>{place}</div>
-        <div>{text}</div>
+        <StyledText>{text}</StyledText>
+        <div> Kosten: {costs}</div>
+        <div> Lehrer: {teacher}</div>
+        <div>Adresse: {place}</div>
       </StyledCardDetails>
     )
   }

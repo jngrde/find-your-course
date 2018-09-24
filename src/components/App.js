@@ -4,6 +4,20 @@ import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import LangCourseScreenContainer from '../containers/LangCourseScreenContainer'
 import reducer from '../reducer'
+import { injectGlobal } from 'styled-components'
+
+injectGlobal`
+body{
+  display: flex;
+  justify-content: center;
+  background: #eeeeee;
+  font-family: sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #4a4a4a;
+}
+`
 
 const store = createStore(
   reducer,

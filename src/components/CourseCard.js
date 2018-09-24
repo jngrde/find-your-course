@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import ToggleCard from './ToggleCard'
 import CardDetails from './CardDetails'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
+
+const StyledCourseCard = styled.div``
 
 export default class CourseCard extends Component {
   static propTypes = {
@@ -12,16 +15,21 @@ export default class CourseCard extends Component {
   }
 
   createDescription(course) {
-    return `${course.duration} (${course.times})`
+    return (
+      <div>
+        {course.duration} <br /> ({course.times})
+      </div>
+    )
   }
 
   render() {
     const { course, i, onClick } = this.props
     return (
-      <div>
+      <StyledCourseCard>
         <ToggleCard
           key={i}
-          title={`${course.title} (${course.provider})`}
+          overHeadline={course.provider}
+          title={course.title}
           description={this.createDescription(course)}
           onClick={onClick}
           bookmarked={course.bookmarked}
@@ -33,7 +41,7 @@ export default class CourseCard extends Component {
             text={course.text}
           />
         </ToggleCard>
-      </div>
+      </StyledCourseCard>
     )
   }
 }
