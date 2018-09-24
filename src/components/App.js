@@ -8,6 +8,7 @@ import { injectGlobal } from 'styled-components'
 
 injectGlobal`
 body{
+  height: 100vH;
   display: flex;
   justify-content: center;
   background: #eeeeee;

@@ -8,14 +8,11 @@ import imgBookmarkNotFilled from '../icons/bookmark.svg'
 import imgBookmarkFilled from '../icons/bookmark_filled.svg'
 
 const StyledCardHeader = styled.div`
-  display: grid;
-  grid-template-columns: 4fr, 2fr;
-  grid-template-rows: repeat(3, auto);
+  display: flex;
+  flex-direction: column;
 `
 const StyledButtonBar = styled.div`
-  grid-column: 2;
-  grid-row: 1;
-  align-self: start;
+  align-self: flex-end;
 
   > * {
     margin-left: 2rem;
@@ -23,24 +20,18 @@ const StyledButtonBar = styled.div`
   }
 `
 const StyledOverHeadline = styled.div`
-  grid-column: 1;
-  grid-row: 2;
   font-size: 0.8rem;
   font-weight: 500;
   color: #989898;
 `
 const StyledTitle = styled.div`
-  grid-column: 1;
-  grid-row: 2;
-  margin-top: 1rem;
-  margin-bottom: 0.5rem;
+  align-self: start;
   font-size: 1.375rem;
+  margin-bottom: 0.5rem;
   font-weight: 500;
-  line-height: 1.45;
+  line-height: 1.2;
 `
 const StyledDescription = styled.div`
-  grid-column: span 2;
-  grid-row: 3;
   font-weight: 500;
   font-size: 0.8rem;
 `
@@ -77,13 +68,13 @@ export default class CardHeader extends Component {
     const { overHeadline, title, description } = this.props
     return (
       <StyledCardHeader data-cy="cardHeader">
-        <StyledOverHeadline>{overHeadline}</StyledOverHeadline>
-        <StyledTitle>{title}</StyledTitle>
-        <StyledDescription>{description}</StyledDescription>
         <StyledButtonBar>
           {this.renderToggleBookmark()}
           {this.renderToggleButton()}
         </StyledButtonBar>
+        <StyledOverHeadline>{overHeadline}</StyledOverHeadline>
+        <StyledTitle>{title}</StyledTitle>
+        <StyledDescription>{description}</StyledDescription>
       </StyledCardHeader>
     )
   }

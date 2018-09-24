@@ -17,7 +17,7 @@ export default class CourseCard extends Component {
   createDescription(course) {
     return (
       <div>
-        {course.duration} <br /> ({course.times})
+        {course.duration} <br /> {course.times}
       </div>
     )
   }

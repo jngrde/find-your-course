@@ -6,15 +6,10 @@ import PropTypes from 'prop-types'
 const CardWrapper = styled.section`
   max-width: 20rem;
   border: solid 0.03rem;
-  margin-bottom: 2rem;
-  padding: 2rem;
+  margin: 0.5rem -1rem;
+  padding: 1rem;
   background: white;
   border-radius: 5px;
-
-  @media screen and (max-width: 400px) {
-    max-width: 400px;
-    padding: 0.5rem;
-    margin: 0.5rem 0.2rem;
   }
 `
 
