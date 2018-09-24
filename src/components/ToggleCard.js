@@ -12,20 +12,22 @@ const CardWrapper = styled.section`
 
 export default class ToggleCard extends Component {
   state = {
-    detailedCardView: false,
+    showDetails: false,
   }
 
   static propTypes = {
     title: PropTypes.string,
     description: PropTypes.string,
     children: PropTypes.any,
+    bookmarked: PropTypes.bool,
+    onClick: PropTypes.func,
   }
 
   toggleDetailedView = () => {
     this.setState({ showDetails: !this.state.showDetails })
   }
   render() {
-    const { title, description } = this.props
+    const { title, description, bookmarked, onClick } = this.props
     return (
       <CardWrapper>
         <CardHeader
@@ -33,6 +35,8 @@ export default class ToggleCard extends Component {
           description={description}
           onToggleDetailedView={this.toggleDetailedView}
           showDetails={this.state.showDetails}
+          onClick={onClick}
+          bookmarked={bookmarked}
         />
         {this.state.showDetails && this.props.children}
       </CardWrapper>

@@ -5,7 +5,10 @@ import { createStore } from 'redux'
 import LangCourseScreenContainer from '../containers/LangCourseScreenContainer'
 import reducer from '../reducer'
 
-const store = createStore(reducer)
+const store = createStore(
+  reducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
 
 class App extends Component {
   render() {

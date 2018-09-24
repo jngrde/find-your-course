@@ -5,6 +5,7 @@ import CourseCard from '../CourseCard'
 export default class LangCourseScreen extends Component {
   static propTypes = {
     courses: PropTypes.arrayOf(PropTypes.object),
+    onToggleBookmark: PropTypes.func.isRequired,
   }
 
   createDescription(course) {
@@ -12,10 +13,15 @@ export default class LangCourseScreen extends Component {
   }
 
   render() {
+    const { onToggleBookmark, courses } = this.props
     return (
       <div>
-        {this.props.courses.map((course, i, toggleBookmark) => (
-          <CourseCard key={i} course={course} onClick={toggleBookmark} />
+        {courses.map((course, index) => (
+          <CourseCard
+            key={index}
+            course={course}
+            onClick={() => onToggleBookmark(index)}
+          />
         ))}
       </div>
     )

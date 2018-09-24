@@ -42,7 +42,7 @@ export default function(state = initialState, action = {}) {
         ...courses.slice(0, index),
         {
           ...courses[index],
-          bookmarked: !this.state.courses.bookmarked,
+          bookmarked: !courses[index].bookmarked,
         },
         ...courses.slice(index + 1),
       ],
