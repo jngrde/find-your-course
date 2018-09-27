@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import LangCourseScreenContainer from '../containers/LangCourseScreenContainer'
 import reducer from '../reducer'
 import { injectGlobal } from 'styled-components'
+import thunk from 'redux-thunk'
 
 injectGlobal`
 body{
@@ -22,7 +23,8 @@ body{
 
 const store = createStore(
   reducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  applyMiddleware(thunk)
 )
 
 class App extends Component {

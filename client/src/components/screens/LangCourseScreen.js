@@ -6,24 +6,36 @@ export default class LangCourseScreen extends Component {
   static propTypes = {
     courses: PropTypes.arrayOf(PropTypes.object),
     onToggleBookmark: PropTypes.func.isRequired,
+    loading: PropTypes.bool.isRequired,
+    onFetchCourses: PropTypes.any,
+  }
+  componentDidMount() {
+    this.props.onFetchCourses()
   }
 
   createDescription(course) {
     return `${course.duration} (${course.times})`
   }
 
+  renderCourses() {
+    const { onToggleBookmark, courses, loading } = this.props
+
+    if (!loading) {
+      return (
+        <React-Fragment>
+          {courses.map((course, index) => (
+            <CourseCard
+              key={index}
+              course={course}
+              onClick={() => onToggleBookmark(index)}
+            />
+          ))}
+        </React-Fragment>
+      )
+    }
+  }
+
   render() {
-    const { onToggleBookmark, courses } = this.props
-    return (
-      <div>
-        {courses.map((course, index) => (
-          <CourseCard
-            key={index}
-            course={course}
-            onClick={() => onToggleBookmark(index)}
-          />
-        ))}
-      </div>
-    )
+    return <React-Fragment>{this.renderCourses()}</React-Fragment>
   }
 }
