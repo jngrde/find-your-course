@@ -3,9 +3,11 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware } from 'redux'
 import LangCourseScreenContainer from '../containers/LangCourseScreenContainer'
+import BookmarkedCourseScreenContainer from '../containers/BookmarkedCourseScreenContainer'
 import reducer from '../reducer'
 import { injectGlobal } from 'styled-components'
 import thunk from 'redux-thunk'
+import NavBar from './NavBar'
 
 injectGlobal`
 body{
@@ -34,6 +36,11 @@ class App extends Component {
         <Provider store={store}>
           <div className="App">
             <Route exact path="/" component={LangCourseScreenContainer} />
+            <Route
+              path="/bookmarked"
+              component={BookmarkedCourseScreenContainer}
+            />
+            <NavBar />
           </div>
         </Provider>
       </Router>

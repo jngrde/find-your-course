@@ -4,7 +4,9 @@ import CardDetails from './CardDetails'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
-const StyledCourseCard = styled.div``
+const StyledCourseCard = styled.div`
+  flex: 1 0 auto;
+`
 
 export default class CourseCard extends Component {
   static propTypes = {

@@ -13,7 +13,6 @@ export const fetchCourses = () => dispatch => {
     .then(res => res.json())
     .then(courses => {
       dispatch(receiveCourses({ courses }))
-      console.log(courses)
     })
 }
 
