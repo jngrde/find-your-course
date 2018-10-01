@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import CourseCard from '../CourseCard'
-
+import NavBar from '../NavBar'
 
 export default class LangCourseScreen extends Component {
   static propTypes = {
@@ -31,16 +31,13 @@ export default class LangCourseScreen extends Component {
               onClick={() => onToggleBookmark(index)}
             />
           ))}
+          <NavBar />
         </React-Fragment>
       )
     }
   }
 
   render() {
-    return (
-      <React-Fragment>
-        {this.renderCourses()}
-      </React-Fragment>
-    )
+    return <React-Fragment>{this.renderCourses()}</React-Fragment>
   }
 }

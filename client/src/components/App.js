@@ -7,7 +7,9 @@ import BookmarkedCourseScreenContainer from '../containers/BookmarkedCourseScree
 import reducer from '../reducer'
 import { injectGlobal } from 'styled-components'
 import thunk from 'redux-thunk'
-import NavBar from './NavBar'
+
+import AdminScreen from './screens/AdminScreen'
+import AdminLoginScreen from './screens/AdminLoginScreen'
 
 injectGlobal`
 body{
@@ -40,7 +42,8 @@ class App extends Component {
               path="/bookmarked"
               component={BookmarkedCourseScreenContainer}
             />
-            <NavBar />
+            <Route path="/login" component={AdminLoginScreen} />
+            <Route path="/admin" component={AdminScreen} />
           </div>
         </Provider>
       </Router>

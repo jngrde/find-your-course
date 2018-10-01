@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import CourseCard from '../CourseCard'
+import NavBar from '../NavBar'
 
 export default class BookmarkedCourseScreen extends Component {
   static propTypes = {
@@ -33,6 +34,7 @@ export default class BookmarkedCourseScreen extends Component {
                 onClick={() => onToggleBookmark(index)}
               />
             ))}
+          <NavBar />
         </React-Fragment>
       )
     }
