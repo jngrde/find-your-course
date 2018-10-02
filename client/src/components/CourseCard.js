@@ -5,7 +5,9 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 const StyledCourseCard = styled.div`
-  flex: 1 0 auto;
+  background: white;
+  border-radius: 5px;
+  padding: 0.7rem;
 `
 
 export default class CourseCard extends Component {

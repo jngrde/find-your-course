@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import CourseCard from '../CourseCard'
-import NavBar from '../NavBar'
 
 export default class BookmarkedCourseScreen extends Component {
   static propTypes = {
     courses: PropTypes.arrayOf(PropTypes.object),
     onToggleBookmark: PropTypes.func.isRequired,
-    loading: PropTypes.bool.isRequired,
+    loading: PropTypes.bool,
     onFetchCourses: PropTypes.any,
     bookmarked: PropTypes.bool,
   }
@@ -24,7 +23,7 @@ export default class BookmarkedCourseScreen extends Component {
 
     if (!loading) {
       return (
-        <React-Fragment>
+        <React.Fragment>
           {courses
             .filter(course => course.bookmarked === true)
             .map((course, index) => (
@@ -34,13 +33,12 @@ export default class BookmarkedCourseScreen extends Component {
                 onClick={() => onToggleBookmark(index)}
               />
             ))}
-          <NavBar />
-        </React-Fragment>
+        </React.Fragment>
       )
     }
   }
 
   render() {
-    return <React-Fragment>{this.renderCourses()}</React-Fragment>
+    return <React.Fragment>{this.renderCourses()}</React.Fragment>
   }
 }

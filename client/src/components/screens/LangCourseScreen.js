@@ -1,13 +1,19 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import CourseCard from '../CourseCard'
-import NavBar from '../NavBar'
+import styled from 'styled-components'
 
+const StyledCourseOverview = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-gap: 1rem;
+  overflow: scroll;
+`
 export default class LangCourseScreen extends Component {
   static propTypes = {
     courses: PropTypes.arrayOf(PropTypes.object),
     onToggleBookmark: PropTypes.func.isRequired,
-    loading: PropTypes.bool.isRequired,
+    loading: PropTypes.bool,
     onFetchCourses: PropTypes.any,
   }
   componentDidMount() {
@@ -23,7 +29,7 @@ export default class LangCourseScreen extends Component {
 
     if (!loading) {
       return (
-        <React-Fragment>
+        <StyledCourseOverview>
           {courses.map((course, index) => (
             <CourseCard
               key={index}
@@ -31,13 +37,12 @@ export default class LangCourseScreen extends Component {
               onClick={() => onToggleBookmark(index)}
             />
           ))}
-          <NavBar />
-        </React-Fragment>
+        </StyledCourseOverview>
       )
     }
   }
 
   render() {
-    return <React-Fragment>{this.renderCourses()}</React-Fragment>
+    return <React.Fragment>{this.renderCourses()}</React.Fragment>
   }
 }

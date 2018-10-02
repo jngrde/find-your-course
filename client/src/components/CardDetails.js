@@ -2,15 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-const StyledCardDetails = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-top: 1.5rem;
-
-  > * {
-    margin-bottom: 1rem;
-  }
-`
+const StyledCardDetails = styled.div``
 const StyledText = styled.span``
 
 export default class CardHeader extends Component {

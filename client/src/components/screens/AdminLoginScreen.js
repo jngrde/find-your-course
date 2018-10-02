@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Redirect } from 'react-router-dom'
 
-const StyledLogin = styled.form`
+const StyledLogin = styled.section`
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -25,28 +25,26 @@ export default class AdminLoginScreen extends Component {
 
   handleChange = event => {
     this.setState({
-      [event.target.id]: event.target.value,
+      [event.target.name]: event.target.value,
     })
   }
 
   handleSubmit = event => {
     event.preventDefault()
     if (this.user === this.adminUser && this.password === this.adminPassword) {
-      this.setState(() => {
-        this.this.state.toAdminScreen = true
-      })
+      this.setState({ toAdminScreen: true })
     }
-    this.renderAdminScreen()
   }
+
   renderAdminScreen = () => {
-    if (this.state.toAdminScreen === true) {
+    if (this.state.toAdminScreen) {
       return <Redirect to="/admin" />
     }
   }
 
   render() {
     return (
-      <React-Fragment>
+      <React.Fragment>
         <StyledLogin>
           <h1>Login</h1>
           <form onSubmit={this.handleSubmit}>
@@ -54,6 +52,7 @@ export default class AdminLoginScreen extends Component {
               Name:
               <input
                 type="text"
+                name="user"
                 value={this.state.user}
                 onChange={this.handleChange}
               />
@@ -61,6 +60,7 @@ export default class AdminLoginScreen extends Component {
             <label>
               Passwort:
               <input
+                name="password"
                 type="password"
                 value={this.state.password}
                 onChange={this.handleChange}
@@ -69,7 +69,8 @@ export default class AdminLoginScreen extends Component {
             <input type="submit" value="Los" />
           </form>
         </StyledLogin>
-      </React-Fragment>
+        {this.renderAdminScreen()}
+      </React.Fragment>
     )
   }
 }

@@ -5,30 +5,45 @@ import { createStore, applyMiddleware } from 'redux'
 import LangCourseScreenContainer from '../containers/LangCourseScreenContainer'
 import BookmarkedCourseScreenContainer from '../containers/BookmarkedCourseScreenContainer'
 import reducer from '../reducer'
-import { injectGlobal } from 'styled-components'
+import styled from 'styled-components'
 import thunk from 'redux-thunk'
-
+import { saveCoursesToSessionStorage } from '../middlewares'
+import NavBar from './NavBar'
 import AdminScreen from './screens/AdminScreen'
 import AdminLoginScreen from './screens/AdminLoginScreen'
+import { injectGlobal } from 'styled-components'
 
 injectGlobal`
+* {
+  box-sizing: border-box;
+}
+html, body{
+  height: 100vh;
+}
+
 body{
-  height: 100vH;
-  display: flex;
-  justify-content: center;
-  background: #eeeeee;
-  font-family: sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
     color: #4a4a4a;
+    background: #eeeeee; 
 }
+`
+
+const StyledApp = styled.div`
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr auto;
+  grid-gap: 1rem;
 `
 
 const store = createStore(
   reducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-  applyMiddleware(thunk)
+  applyMiddleware(saveCoursesToSessionStorage, thunk)
 )
 
 class App extends Component {
@@ -36,7 +51,7 @@ class App extends Component {
     return (
       <Router>
         <Provider store={store}>
-          <div className="App">
+          <StyledApp>
             <Route exact path="/" component={LangCourseScreenContainer} />
             <Route
               path="/bookmarked"
@@ -44,7 +59,8 @@ class App extends Component {
             />
             <Route path="/login" component={AdminLoginScreen} />
             <Route path="/admin" component={AdminScreen} />
-          </div>
+            <NavBar />
+          </StyledApp>
         </Provider>
       </Router>
     )

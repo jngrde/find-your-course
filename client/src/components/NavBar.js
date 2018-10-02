@@ -4,14 +4,8 @@ import styled from 'styled-components'
 import list from '../icons/list.svg'
 import bookmark from '../icons/bookmark_filled.svg'
 
-const StyledNavBar = styled.div`
+const StyledNavBar = styled.footer`
   display: flex;
-  flex-shrink: 0;
-  position: sticky;
-  flex-shrink: 0;
-  bottom: 0;
-  max-width: 200rem;
-  margin: 0.5rem -1rem;
   background: green;
   justify-content: space-around;
   align-items: center;

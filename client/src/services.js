@@ -5,3 +5,7 @@ export function fetchCourses() {
       return []
     })
 }
+
+export function saveToSessionStorage(name, data) {
+  sessionStorage.setItem(name, JSON.stringify(data))
+}

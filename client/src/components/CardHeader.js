@@ -13,10 +13,10 @@ const StyledCardHeader = styled.div`
 `
 const StyledButtonBar = styled.div`
   align-self: flex-end;
+  padding: 5px;
 
   > * {
-    margin-left: 2rem;
-    transform: scale(1.5);
+    margin-left: 1rem;
   }
 `
 const StyledOverHeadline = styled.div`
