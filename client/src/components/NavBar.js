@@ -6,7 +6,7 @@ import bookmark from '../icons/bookmark_filled.svg'
 
 const StyledNavBar = styled.footer`
   display: flex;
-  background: green;
+  background: #f9423a;
   justify-content: space-around;
   align-items: center;
 `

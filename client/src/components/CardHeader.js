@@ -17,12 +17,13 @@ const StyledButtonBar = styled.div`
 
   > * {
     margin-left: 1rem;
+    fill: #06ac42;
   }
 `
 const StyledOverHeadline = styled.div`
   font-size: 0.8rem;
   font-weight: 500;
-  color: #989898;
+  color: #f9423a;
 `
 const StyledTitle = styled.div`
   align-self: start;

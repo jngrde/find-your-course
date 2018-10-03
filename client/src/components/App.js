@@ -27,7 +27,7 @@ body{
     font-weight: 400;
     line-height: 1.5;
     color: #4a4a4a;
-    background: #eeeeee; 
+    background: rgb(246, 243, 234) 
 }
 `
 
@@ -36,7 +36,7 @@ const StyledApp = styled.div`
   min-height: 100vh;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr auto;
+  grid-template-rows: 1fr 50px;
   grid-gap: 1rem;
 `
 
