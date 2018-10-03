@@ -1,17 +1,26 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import CourseCard from '../CourseCard'
+import styled from 'styled-components'
+
+const StyledCourseOverview = styled.div`
+  align-items: start;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-gap: 1rem;
+  overflow-x: scroll;
+`
 
 export default class BookmarkedCourseScreen extends Component {
   static propTypes = {
     courses: PropTypes.arrayOf(PropTypes.object),
-    onToggleBookmark: PropTypes.func.isRequired,
+    toggleBookmark: PropTypes.func.isRequired,
     loading: PropTypes.bool,
-    onFetchCourses: PropTypes.any,
+    fetchCourses: PropTypes.any,
     bookmarked: PropTypes.bool,
   }
   componentDidMount() {
-    this.props.onFetchCourses()
+    this.props.fetchCourses
   }
 
   createDescription(course) {
@@ -19,21 +28,21 @@ export default class BookmarkedCourseScreen extends Component {
   }
 
   renderCourses() {
-    const { onToggleBookmark, courses, loading } = this.props
+    const { toggleBookmark, courses, loading } = this.props
 
     if (!loading) {
       return (
-        <React.Fragment>
+        <StyledCourseOverview>
           {courses
             .filter(course => course.bookmarked === true)
             .map((course, index) => (
               <CourseCard
                 key={index}
                 course={course}
-                onClick={() => onToggleBookmark(index)}
+                onClick={() => toggleBookmark(index)}
               />
             ))}
-        </React.Fragment>
+        </StyledCourseOverview>
       )
     }
   }

@@ -13,12 +13,12 @@ const StyledCourseOverview = styled.div`
 export default class LangCourseScreen extends Component {
   static propTypes = {
     courses: PropTypes.arrayOf(PropTypes.object),
-    onToggleBookmark: PropTypes.func.isRequired,
+    toggleBookmark: PropTypes.func.isRequired,
     loading: PropTypes.bool,
-    onFetchCourses: PropTypes.any,
+    fetchCourses: PropTypes.any,
   }
   componentDidMount() {
-    this.props.onFetchCourses()
+    this.props.fetchCourses()
   }
 
   createDescription(course) {
@@ -26,7 +26,7 @@ export default class LangCourseScreen extends Component {
   }
 
   renderCourses() {
-    const { onToggleBookmark, courses, loading } = this.props
+    const { toggleBookmark, courses, loading } = this.props
 
     if (!loading) {
       return (
@@ -35,7 +35,7 @@ export default class LangCourseScreen extends Component {
             <CourseCard
               key={index}
               course={course}
-              onClick={() => onToggleBookmark(index)}
+              onClick={() => toggleBookmark(index)}
             />
           ))}
         </StyledCourseOverview>
