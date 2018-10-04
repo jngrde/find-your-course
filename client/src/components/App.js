@@ -36,7 +36,7 @@ const StyledApp = styled.div`
   min-height: 100vh;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 50px;
+  grid-template-rows: 1fr 1fr 50px;
   grid-gap: 1rem;
 `
 

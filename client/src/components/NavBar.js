@@ -5,6 +5,7 @@ import list from '../icons/list.svg'
 import bookmark from '../icons/bookmark_filled.svg'
 
 const StyledNavBar = styled.footer`
+  grid-row: 3;
   display: flex;
   background: #f9423a;
   justify-content: space-around;

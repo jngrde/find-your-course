@@ -8,7 +8,7 @@ const StyledCourseOverview = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   grid-gap: 1rem;
-  overflow-x: scroll;
+  overflow-y: scroll;
 `
 export default class LangCourseScreen extends Component {
   static propTypes = {
