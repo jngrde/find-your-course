@@ -1,33 +1,24 @@
 import ACTIONS from './actions'
+import produce from 'immer'
+
 const initialState = {
   isLoading: true,
   courses: [],
 }
 
 export default function(state = initialState, action = {}) {
-  let index, courses
+  let index
 
   switch (action.type) {
   case ACTIONS.TOGGLE_BOOKMARK:
     index = action.payload.index
-    courses = state.courses
-    return {
-      courses: [
-        ...courses.slice(0, index),
-        {
-          ...courses[index],
-          bookmarked: !courses[index].bookmarked,
-        },
-        ...courses.slice(index + 1),
-      ],
-    }
+    return produce(state, draft => {
+      draft.courses[index].bookmarked = !draft.courses[index].bookmarked
+    })
   case ACTIONS.RECEIVE_COURSES:
-    return {
-      ...state,
-      courses: action.payload.courses,
-      isLoading: false,
-    }
-
+    return produce(state, draft => {
+      (draft.courses = action.payload.courses), (draft.isLoading = false)
+    })
   default:
     return state
   }
