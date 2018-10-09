@@ -3,10 +3,12 @@ import { createAction } from 'redux-actions'
 const ACTIONS = {
   TOGGLE_BOOKMARK: 'TOGGLE_BOOKMARK',
   RECEIVE_COURSES: 'RECEIVE_COURSES',
+  SEARCH: 'SEARCH',
 }
 
 export const toggleBookmark = createAction(ACTIONS.TOGGLE_BOOKMARK)
 export const receiveCourses = createAction(ACTIONS.RECEIVE_COURSES)
+export const search = createAction(ACTIONS.SEARCH)
 
 export const fetchCourses = () => async dispatch => {
   let savedCourses

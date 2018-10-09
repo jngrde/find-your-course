@@ -42,4 +42,8 @@ router.patch('/:id', (req, res) => {
     .then(data => res.json(data))
     .catch(err => console.log(err))
 })
+
+router.post('/login', (req, res) => {
+  User.find({username: req.params.username}).exec().then().catch(err => console.log(err))
+})
 module.exports = router

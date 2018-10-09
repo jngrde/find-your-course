@@ -12,6 +12,7 @@ import NavBar from './NavBar'
 import AdminScreen from './screens/AdminScreen'
 import AdminLoginScreen from './screens/AdminLoginScreen'
 import { injectGlobal } from 'styled-components'
+import SearchBar from './SearchBar'
 
 injectGlobal`
 * {
@@ -37,7 +38,7 @@ const StyledApp = styled.div`
   max-height: 100vh;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr auto 50px;
+  grid-template-rows: 50px 1fr auto 50px;
   grid-gap: 1rem;
 `
 
@@ -53,6 +54,7 @@ class App extends Component {
       <Router>
         <Provider store={store}>
           <StyledApp>
+            <SearchBar />
             <Route exact path="/" component={LangCourseScreenContainer} />
             <Route
               path="/bookmarked"

@@ -59,9 +59,9 @@ export default class CardHeader extends Component {
   renderToggleBookmark = () => {
     const { bookmarked, onClick } = this.props
     return bookmarked ? (
-      <img src={imgBookmarkFilled} alt="Toggle up" onClick={onClick} />
+      <img src={imgBookmarkFilled} alt="Bookmark" onClick={onClick} />
     ) : (
-      <img src={imgBookmarkNotFilled} alt="Toggle down" onClick={onClick} />
+      <img src={imgBookmarkNotFilled} alt="Bookmarked" onClick={onClick} />
     )
   }
 
