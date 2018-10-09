@@ -11,10 +11,11 @@ export const receiveCourses = createAction(ACTIONS.RECEIVE_COURSES)
 export const fetchCourses = () => async dispatch => {
   let savedCourses
   try {
-    savedCourses = JSON.parse(sessionStorage.getItem('courses'))
+    savedCourses = JSON.parse(sessionStorage.getItem('courses')) || []
   } catch (error) {
     savedCourses = []
   }
+
   if (savedCourses.length) {
     dispatch(receiveCourses({ courses: savedCourses }))
   } else {

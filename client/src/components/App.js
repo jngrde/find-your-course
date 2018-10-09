@@ -9,7 +9,7 @@ import styled from 'styled-components'
 import thunk from 'redux-thunk'
 import { saveCoursesToSessionStorage } from '../middlewares'
 import NavBar from './NavBar'
-import AdminScreen from './screens/AdminScreen'
+import AdminScreenContainer from '../containers/AdminScreenContainer'
 import AdminLoginScreen from './screens/AdminLoginScreen'
 import { injectGlobal } from 'styled-components'
 
@@ -59,7 +59,7 @@ class App extends Component {
               component={BookmarkedCourseScreenContainer}
             />
             <Route path="/login" component={AdminLoginScreen} />
-            <Route path="/admin" component={AdminScreen} />
+            <Route path="/admin" component={AdminScreenContainer} />
             <NavBar />
           </StyledApp>
         </Provider>
