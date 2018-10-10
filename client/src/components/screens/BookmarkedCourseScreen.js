@@ -20,7 +20,7 @@ export default class BookmarkedCourseScreen extends Component {
     bookmarked: PropTypes.bool,
   }
   componentDidMount() {
-    this.props.fetchCourses
+    this.props.fetchCourses()
   }
 
   createDescription(course) {
