@@ -12,7 +12,7 @@ import NavBar from './NavBar'
 import AdminScreenContainer from '../containers/AdminScreenContainer'
 import AdminLoginScreen from './screens/AdminLoginScreen'
 import { injectGlobal } from 'styled-components'
-import SearchBar from './SearchBar'
+import SearchBar from './../containers/SearchBarContainer'
 
 injectGlobal`
 * {
@@ -39,7 +39,7 @@ const StyledApp = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 50px 1fr auto 50px;
-  grid-gap: 1rem;
+  grid-gap: 0;
 `
 
 const store = createStore(

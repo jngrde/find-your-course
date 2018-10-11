@@ -46,7 +46,7 @@ export default class AdminLoginScreen extends Component {
     return (
       <React.Fragment>
         <StyledLogin>
-          <h1>Login</h1>
+          <h1>Admin-Login</h1>
           <form onSubmit={this.handleSubmit}>
             <label>
               Name:

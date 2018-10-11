@@ -8,6 +8,17 @@ const StyledSearchBar = styled.header`
   background: #f9423a;
   justify-content: center;
   align-items: center;
+  @media (min-width: 600px) {
+    display: none;
+  }
+`
+
+const StyledInput = styled.input`
+  width: 15rem;
+  padding: 3px;
+  background: rgb(246, 243, 234);
+  border-radius: 5px;
+  border: none;
 `
 
 export default class SearchBar extends Component {
@@ -19,9 +30,9 @@ export default class SearchBar extends Component {
     return (
       <StyledSearchBar>
         <form>
-          <input
+          <StyledInput
             type="search"
-            placeholder="Suche"
+            placeholder="Suche..."
             onChange={e => search(e.target.value)}
           />
         </form>

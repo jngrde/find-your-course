@@ -16,6 +16,7 @@ export default class LangCourseScreen extends Component {
     toggleBookmark: PropTypes.func.isRequired,
     loading: PropTypes.bool,
     fetchCourses: PropTypes.any,
+    search: PropTypes.string,
   }
   componentDidMount() {
     this.props.fetchCourses()
@@ -26,18 +27,26 @@ export default class LangCourseScreen extends Component {
   }
 
   renderCourses() {
-    const { toggleBookmark, courses, loading } = this.props
+    const { toggleBookmark, courses, loading, search } = this.props
 
     if (!loading) {
       return (
         <StyledCourseOverview>
-          {courses.map((course, index) => (
-            <CourseCard
-              key={index}
-              course={course}
-              onClick={() => toggleBookmark(index)}
-            />
-          ))}
+          {courses
+            .filter(course =>
+              Object.values(course).some(val => {
+                return (
+                  typeof val === 'string' && val.toLowerCase().includes(search)
+                )
+              })
+            )
+            .map((course, index) => (
+              <CourseCard
+                key={index}
+                course={course}
+                onClick={() => toggleBookmark(index)}
+              />
+            ))}
         </StyledCourseOverview>
       )
     }

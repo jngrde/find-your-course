@@ -5,6 +5,7 @@ import { toggleBookmark, fetchCourses } from '../actions'
 const mapStateToProps = state => ({
   courses: state.courses,
   loading: state.isLoading,
+  search: state.search,
 })
 const mapDispatchToProps = {
   toggleBookmark: index => toggleBookmark({ index }),

@@ -6,6 +6,15 @@ export function fetchCourses() {
     })
 }
 
+export function makePost(name, password) {
+  return fetch('http://loalhost:5000/api/login', {
+    method: 'POST',
+    body: { name, password },
+  })
+    .then(res => res.json())
+    .then(result => console.log(result))
+}
+
 export function saveToSessionStorage(name, data) {
   sessionStorage.setItem(name, JSON.stringify(data))
 }
