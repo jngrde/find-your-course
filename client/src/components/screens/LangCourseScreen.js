@@ -4,11 +4,14 @@ import CourseCard from '../CourseCard'
 import styled from 'styled-components'
 
 const StyledCourseOverview = styled.div`
-  align-items: start;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   grid-gap: 1rem;
   overflow-y: scroll;
+
+  @media (min-width: 1024px) {
+    align-items: start;
+  }
 `
 export default class LangCourseScreen extends Component {
   static propTypes = {

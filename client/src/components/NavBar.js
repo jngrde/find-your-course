@@ -7,11 +7,10 @@ import bookmark from '../icons/bookmark_filled.svg'
 const StyledNavBar = styled.footer`
   grid-row: 4;
   display: flex;
-  background: rgb(246, 243, 234);
-  border-top: 1px solid #f9423a;
+  background: #f9423a;
   justify-content: space-around;
   align-items: center;
-  @media (min-width: 600px) {
+  @media (min-width: 1200px) {
     display: none;
   }
 `

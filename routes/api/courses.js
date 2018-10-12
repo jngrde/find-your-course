@@ -19,7 +19,7 @@ router.post('/', (req, res) => {
     .then(data => {
       res.json(data)
     })
-    .catch(err => console.log(err))
+    .catch(err => res.json(err))
 })
 
 router.get('/getAll', (req, res) => {
@@ -41,9 +41,5 @@ router.patch('/:id', (req, res) => {
   Course.findByIdAndUpdate(req.params.id, req.body, { new: true })
     .then(data => res.json(data))
     .catch(err => console.log(err))
-})
-
-router.post('/login', (req, res) => {
-  User.find({username: req.params.username}).exec().then().catch(err => console.log(err))
 })
 module.exports = router

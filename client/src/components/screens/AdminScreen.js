@@ -1,6 +1,16 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import AdminTable from '../AdminTable'
+import styled from 'styled-components'
+
+const StyledButton = styled.button`
+  background: rgb(246, 243, 234);
+  padding: 6px;
+  margin: 6px;
+  border: 1px solid #f9423a;
+  border-radius: 5px;
+`
+
 export default class AdminScreen extends Component {
   state = {
     editable: false,
@@ -22,12 +32,11 @@ export default class AdminScreen extends Component {
   }
   render() {
     const { index, courses, loading } = this.props
-    const { editable } = this.state.editable
+    const { editable } = this.state
     return (
       <div>
-        <h1>Admin</h1>
-        <button onClick={this.saveTable}>Speichern</button>
-        <button onClick={this.handleEdit}>Bearbeiten</button>
+        <StyledButton onClick={this.saveTable}>Speichern</StyledButton>
+        <StyledButton onClick={this.handleEdit}>Bearbeiten</StyledButton>
         <AdminTable
           key={index}
           courses={courses}

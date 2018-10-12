@@ -33,7 +33,8 @@ body{
 `
 
 const StyledApp = styled.div`
-  width: 100%;
+  width: 105%;
+  margin: -9px;
   min-height: 100vh;
   max-height: 100vh;
   display: grid;

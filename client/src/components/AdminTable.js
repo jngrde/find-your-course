@@ -7,7 +7,7 @@ export default class AdminTable extends Component {
   static propTypes = {
     courses: PropTypes.array.isRequired,
     loading: PropTypes.bool.isRequired,
-    editable: PropTypes.bool.isRequired,
+    editable: PropTypes.any,
   }
   renderTable() {
     const { courses, loading, editable } = this.props

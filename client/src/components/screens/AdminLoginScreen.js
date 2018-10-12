@@ -9,6 +9,11 @@ const StyledLogin = styled.section`
   justify-content: center;
   align-items: center;
 `
+const StyledLabel = styled.label`
+  display: flex;
+  flex-direction: column;
+`
+const StyledInput = styled.input``
 
 export default class AdminLoginScreen extends Component {
   state = {
@@ -48,24 +53,24 @@ export default class AdminLoginScreen extends Component {
         <StyledLogin>
           <h1>Admin-Login</h1>
           <form onSubmit={this.handleSubmit}>
-            <label>
+            <StyledLabel>
               Name:
-              <input
+              <StyledInput
                 type="text"
                 name="user"
                 value={this.state.user}
                 onChange={this.handleChange}
               />
-            </label>
-            <label>
+            </StyledLabel>
+            <StyledLabel>
               Passwort:
-              <input
+              <StyledInput
                 name="password"
                 type="password"
                 value={this.state.password}
                 onChange={this.handleChange}
               />
-            </label>
+            </StyledLabel>
             <input type="submit" value="Los" />
           </form>
         </StyledLogin>

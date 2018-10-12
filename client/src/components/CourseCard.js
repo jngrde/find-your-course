@@ -8,6 +8,8 @@ const StyledCourseCard = styled.div`
   background: white;
   border-radius: 5px;
   padding: 0.7rem;
+  margin-left: 10px;
+  margin-right: 10px;
 `
 
 export default class CourseCard extends Component {
