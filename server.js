@@ -1,9 +1,15 @@
 const express = require('express')
+require('dotenv').config()
 const app = express()
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
-
+const cookieParser = require('cookie-parser')
 const courses = require('./routes/api/courses')
+const users = require('./routes/api/users')
+const withAuth = require('./middleware')
+
+const url = process.env.MONGO_DB_URI
+
 app.use(function(req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader(
@@ -17,17 +23,22 @@ app.use(function(req, res, next) {
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+app.use(cookieParser())
 
 app.use('/api/courses', courses)
+app.use('/api/users', users)
 
 mongoose
-  .connect('mongodb://jgrade:kF88Wc7i6DIZ6C@ds161700.mlab.com:61700/kursmelder')
+  .connect(url)
   .then(() => console.log('connected'))
   .catch(err => console.log(err))
 
 app.get('/', (req, res) => {
-  res.send('Axel ist der Beste!')
+  res.send('Server works')
 })
-app.listen(5000, () => {
+app.get('/checkToken', withAuth, function(req, res) {
+  res.sendStatus(200)
+})
+app.listen(process.env.PORT, () => {
   console.log('Server works')
 })

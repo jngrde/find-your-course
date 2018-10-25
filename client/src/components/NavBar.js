@@ -10,7 +10,7 @@ const StyledNavBar = styled.footer`
   background: #f9423a;
   justify-content: space-around;
   align-items: center;
-  @media (min-width: 1200px) {
+  @media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 1) {
     display: none;
   }
 `

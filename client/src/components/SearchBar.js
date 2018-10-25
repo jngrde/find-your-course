@@ -8,7 +8,7 @@ const StyledSearchBar = styled.header`
   background: #f9423a;
   justify-content: center;
   align-items: center;
-  @media (min-width: 1200px) {
+  @media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 1) {
     display: none;
   }
 `
@@ -16,9 +16,10 @@ const StyledSearchBar = styled.header`
 const StyledInput = styled.input`
   width: 15rem;
   padding: 3px;
-  background: rgb(246, 243, 234);
+  background: white;
   border-radius: 5px;
   border: none;
+  outline: none !important;
 `
 
 export default class SearchBar extends Component {

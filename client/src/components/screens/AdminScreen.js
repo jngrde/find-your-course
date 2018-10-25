@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import AdminTable from '../AdminTable'
 import styled from 'styled-components'
+import { Redirect } from 'react-router-dom'
 
 const StyledButton = styled.button`
   background: rgb(246, 243, 234);
@@ -13,7 +14,10 @@ const StyledButton = styled.button`
 
 export default class AdminScreen extends Component {
   state = {
+    verified: false,
+    redirect: true,
     editable: false,
+    handleAdmin: true,
   }
 
   static propTypes = {
@@ -24,7 +28,16 @@ export default class AdminScreen extends Component {
     editable: PropTypes.bool,
   }
   componentDidMount() {
-    this.props.fetchCourses()
+    fetch('http://localhost:5000/checkToken')
+      .then(res => {
+        if (res.status === 200) {
+          this.setState({ verified: true })
+          this.props.fetchCourses()
+        }
+      })
+      .catch(() => {
+        this.setState({ verified: false, redirect: true })
+      })
   }
 
   handleEdit = () => {
@@ -32,18 +45,27 @@ export default class AdminScreen extends Component {
   }
   render() {
     const { index, courses, loading } = this.props
-    const { editable } = this.state
-    return (
-      <div>
-        <StyledButton onClick={this.saveTable}>Speichern</StyledButton>
-        <StyledButton onClick={this.handleEdit}>Bearbeiten</StyledButton>
-        <AdminTable
-          key={index}
-          courses={courses}
-          loading={loading}
-          editable={editable}
-        />
-      </div>
-    )
+    const { verified, redirect, editable } = this.state
+    let view = <h1>Loading...</h1>
+    if (!verified) {
+      if (redirect) {
+        view = <Redirect to="/login" />
+      } else {
+        view = (
+          <div>
+            <StyledButton onClick={this.saveTable}>Speichern</StyledButton>
+            <StyledButton onClick={this.handleEdit}>Bearbeiten</StyledButton>
+            <AdminTable
+              key={index}
+              courses={courses}
+              loading={loading}
+              editable={editable}
+            />
+          </div>
+        )
+      }
+
+      return <React.Fragment>{view}</React.Fragment>
+    }
   }
 }
