@@ -7,6 +7,7 @@ import styled from 'styled-components'
 const StyledCourseCard = styled.div`
   background: white;
   border-radius: 5px;
+  border: solid, #bfbfbf;
   padding: 0.7rem;
   margin-left: 10px;
   margin-right: 10px;

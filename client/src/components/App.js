@@ -14,35 +14,6 @@ import AdminLoginScreen from './screens/AdminLoginScreen'
 import { injectGlobal } from 'styled-components'
 import SearchBar from './../containers/SearchBarContainer'
 
-injectGlobal`
-* {
-  box-sizing: border-box;
-}
-html, body{
-  height: 100vh;
-}
-
-body{
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #4a4a4a;
-    background: rgb(246, 243, 234) 
-}
-`
-
-const StyledApp = styled.div`
-  width: 105%;
-  margin: -9px;
-  min-height: 100vh;
-  max-height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 50px 1fr auto 50px;
-  grid-gap: 0;
-`
-
 const store = createStore(
   reducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
@@ -72,3 +43,32 @@ class App extends Component {
 }
 
 export default App
+
+injectGlobal`
+* {
+  box-sizing: border-box;
+}
+html, body{
+  height: 100vh;
+}
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #314659;
+    background: #fff; 
+}
+`
+
+const StyledApp = styled.div`
+  width: 105%;
+  margin: -9px;
+  min-height: 100vh;
+  max-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 50px 1fr auto 50px;
+  grid-gap: 0;
+`

@@ -6,7 +6,12 @@ const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const courses = require('./routes/api/courses')
 const users = require('./routes/api/users')
-const withAuth = require('./middleware')
+//const withAuth = require('./middleware')
+const expressjwt = require('express-jwt')
+
+const jwtCheck = expressjwt({
+  secret: process.env.SECRET,
+})
 
 const url = process.env.MONGO_DB_URI
 
@@ -36,7 +41,7 @@ mongoose
 app.get('/', (req, res) => {
   res.send('Server works')
 })
-app.get('/checkToken', withAuth, function(req, res) {
+app.get('/checkToken', jwtCheck, function(req, res) {
   res.sendStatus(200)
 })
 app.listen(process.env.PORT, () => {

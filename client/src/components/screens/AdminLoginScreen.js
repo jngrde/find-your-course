@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { Redirect } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 const StyledLogin = styled.section`
@@ -45,6 +44,7 @@ export default class AdminLoginScreen extends Component {
       body: JSON.stringify(this.state),
       headers: {
         'Content-Type': 'application/json',
+        Authorization: 'Bearer',
       },
     })
       .then(res => {
@@ -60,11 +60,11 @@ export default class AdminLoginScreen extends Component {
       })
   }
 
-  renderAdminScreen = () => {
+  /*renderAdminScreen = () => {
     if (this.state.toAdminScreen) {
       return <Redirect to="/admin" />
     }
-  }
+  }*/
 
   render() {
     return (
@@ -93,7 +93,6 @@ export default class AdminLoginScreen extends Component {
             <input type="submit" value="Los" />
           </form>
         </StyledLogin>
-        {this.renderAdminScreen()}
       </React.Fragment>
     )
   }
