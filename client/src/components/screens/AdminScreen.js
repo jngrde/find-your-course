@@ -3,13 +3,23 @@ import PropTypes from 'prop-types'
 import AdminTable from '../AdminTable'
 import styled from 'styled-components'
 
+const AdminPageWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+const ButtonWrapper = styled.div`
+  align-self: flex-end;
+`
+
 const StyledButton = styled.button`
-  background: rgb(246, 243, 234);
+  align-self: right;
   padding: 6px;
   margin: 6px;
   border: 1px solid #f9423a;
   border-radius: 5px;
 `
+const StyledHeading = styled.h1``
 
 export default class AdminScreen extends Component {
   state = {
@@ -34,16 +44,20 @@ export default class AdminScreen extends Component {
     const { index, courses, loading } = this.props
     const { editable } = this.state
     return (
-      <div>
-        <StyledButton onClick={this.saveTable}>Speichern</StyledButton>
-        <StyledButton onClick={this.handleEdit}>Bearbeiten</StyledButton>
+      <AdminPageWrapper>
+        <StyledHeading>Admin-Seite</StyledHeading>
+        <ButtonWrapper>
+          <StyledButton onClick={this.saveTable}>Speichern</StyledButton>
+          <StyledButton onClick={this.handleEdit}>Bearbeiten</StyledButton>
+          <StyledButton onClick={this.handleEdit}>Logout</StyledButton>
+        </ButtonWrapper>
         <AdminTable
           key={index}
           courses={courses}
           loading={loading}
           editable={editable}
         />
-      </div>
+      </AdminPageWrapper>
     )
   }
 }

@@ -2,23 +2,32 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
 
-const StyledSearchBar = styled.header`
+const HeaderWrapper = styled.div`
   grid-row: 1;
-  display: flex;
-  background: #f9423a;
-  justify-content: center;
-  align-items: center;
   @media (min-width: 1200px) {
     display: none;
   }
 `
+const StyledHR = styled.hr`
+  height: 12px;
+  border: 0;
+  box-shadow: inset 0 12px 12px -12px #ebedf0;
+`
+
+const StyledSearchBar = styled.header`
+  height: 80%;
+  display: flex;
+  background: #fff;
+  justify-content: center;
+  align-items: center;
+`
 
 const StyledInput = styled.input`
-  width: 15rem;
+  width: 12rem;
   padding: 3px;
-  background: rgb(246, 243, 234);
+  background: #fff;
   border-radius: 5px;
-  border: none;
+  border: solid 0.5px #ebedf0;
 `
 
 export default class SearchBar extends Component {
@@ -28,15 +37,18 @@ export default class SearchBar extends Component {
   render() {
     const { search } = this.props
     return (
-      <StyledSearchBar>
-        <form>
-          <StyledInput
-            type="search"
-            placeholder="Suche..."
-            onChange={e => search(e.target.value)}
-          />
-        </form>
-      </StyledSearchBar>
+      <HeaderWrapper>
+        <StyledSearchBar>
+          <form>
+            <StyledInput
+              type="search"
+              placeholder="Suche..."
+              onChange={e => search(e.target.value)}
+            />
+          </form>
+        </StyledSearchBar>
+        <StyledHR />
+      </HeaderWrapper>
     )
   }
 }

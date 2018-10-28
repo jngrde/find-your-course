@@ -13,6 +13,10 @@ export default class AdminTable extends Component {
     const { courses, loading, editable } = this.props
     const columns = [
       {
+        Header: '',
+        Cell: <button>x</button>,
+      },
+      {
         Header: 'Titel',
         accessor: 'title',
         Cell: editable && this.renderEditable,

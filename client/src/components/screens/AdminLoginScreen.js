@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { Redirect } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 const StyledLogin = styled.section`
   display: flex;
@@ -16,16 +16,19 @@ const StyledLabel = styled.label`
 const StyledInput = styled.input``
 
 export default class AdminLoginScreen extends Component {
+  static propTypes = {
+    history: PropTypes.any,
+  }
+
   state = {
-    adminUser: 'admin',
-    adminPassword: '12345',
-    user: '',
+    name: '',
     password: '',
     toAdminScreen: false,
+    handleAdmin: true,
   }
 
   validateForm() {
-    return this.state.user.length > 0 && this.state.password.length > 0
+    return this.state.name.length > 0 && this.state.password.length > 0
   }
 
   handleChange = event => {
@@ -36,16 +39,31 @@ export default class AdminLoginScreen extends Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    if (this.user === this.adminUser && this.password === this.adminPassword) {
-      this.setState({ toAdminScreen: true })
-    }
+    fetch('http://localhost:5000/api/users/authenticate', {
+      method: 'POST',
+      body: JSON.stringify(this.state),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(res => {
+        if (res.status === 200) {
+          this.props.history.push('/admin')
+        } else {
+          const error = new Error(res.error)
+          throw error
+        }
+      })
+      .catch(() => {
+        alert('Error logging in please try again')
+      })
   }
 
-  renderAdminScreen = () => {
+  /*renderAdminScreen = () => {
     if (this.state.toAdminScreen) {
       return <Redirect to="/admin" />
     }
-  }
+  }*/
 
   render() {
     return (
@@ -57,7 +75,7 @@ export default class AdminLoginScreen extends Component {
               Name:
               <StyledInput
                 type="text"
-                name="user"
+                name="name"
                 value={this.state.user}
                 onChange={this.handleChange}
               />
@@ -74,7 +92,6 @@ export default class AdminLoginScreen extends Component {
             <input type="submit" value="Los" />
           </form>
         </StyledLogin>
-        {this.renderAdminScreen()}
       </React.Fragment>
     )
   }

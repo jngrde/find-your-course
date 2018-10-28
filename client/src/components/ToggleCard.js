@@ -3,7 +3,10 @@ import styled from 'styled-components'
 import CardHeader from './CardHeader'
 import PropTypes from 'prop-types'
 
-const CardWrapper = styled.section``
+const CardWrapper = styled.section`
+  border: solid 0.5px #ebedf0;
+  padding: 15px;
+`
 
 export default class ToggleCard extends Component {
   state = {
