@@ -6,15 +6,7 @@ import SearchBar from '../SearchBar'
 import NavBar from '../NavBar'
 
 const ScreenWrapper = styled.div`
-  width: 105%;
-  margin-left: -9px;
-  margin-right: -9px;
-  min-height: 100vh;
-  max-height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 60px 1fr auto 60px;
-  grid-gap: 0;
+  margin-top: 55px;
   @media (min-width: 1200px) {
     width: 50%;
   }

@@ -21,6 +21,7 @@ html, body{
 }
 
 body{
+  margin:0;
     font-family: 'Open Sans', sans-serif;
     font-size: 1rem;
     font-weight: 400;
