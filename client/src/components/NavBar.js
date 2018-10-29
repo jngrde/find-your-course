@@ -17,10 +17,6 @@ const StyledNavBar = styled.footer`
   align-items: center;
 `
 const activeClassName = 'nav-item-active'
-const svgWrapper = styled.div`
-  height: 25px;
-  width: 25px;
-`
 
 const NavItem = styled(NavLink).attrs({
   activeClassName,
@@ -35,15 +31,11 @@ export default class NavBar extends Component {
     return (
       <StyledNavBar>
         <NavItem to="/" exact activeClassName={activeClassName}>
-          <svgWrapper>
-            <img src={list} alt="List symbol" />
-          </svgWrapper>
+          <img src={list} alt="List symbol" />
         </NavItem>
 
         <NavItem to="/bookmarked" activeClassName={activeClassName}>
-          <svgWrapper>
-            <img src={bookmark} alt="Bookmark symbol" />
-          </svgWrapper>
+          <img src={bookmark} alt="Bookmark symbol" />
         </NavItem>
       </StyledNavBar>
     )
