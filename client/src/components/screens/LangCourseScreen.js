@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import CourseCard from '../CourseCard'
 import styled from 'styled-components'
-import SearchBar from '../SearchBar'
 import NavBar from '../NavBar'
+import SearchBarContainer from '../../containers/SearchBarContainer'
 
 const ScreenWrapper = styled.div`
   margin-top: 55px;
@@ -15,12 +15,7 @@ const ScreenWrapper = styled.div`
 const StyledCourseOverview = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  grid-gap: 1rem;
-  overflow-y: scroll;
-
-  @media (min-width: 1024px) {
-    align-items: start;
-  }
+  grid-gap: 0;
 `
 export default class LangCourseScreen extends Component {
   static propTypes = {
@@ -44,7 +39,7 @@ export default class LangCourseScreen extends Component {
     if (!loading) {
       return (
         <ScreenWrapper>
-          <SearchBar />
+          <SearchBarContainer />
           <StyledCourseOverview>
             {courses
               .filter(course =>

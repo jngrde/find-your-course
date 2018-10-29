@@ -20,6 +20,7 @@ const StyledInput = styled.input`
   padding: 3px;
   border-radius: 5px;
   border: solid 0.5px #ebedf0;
+  outline: none !important;
 `
 
 export default class SearchBar extends Component {
