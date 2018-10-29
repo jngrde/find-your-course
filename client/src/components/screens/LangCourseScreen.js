@@ -2,16 +2,20 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import CourseCard from '../CourseCard'
 import styled from 'styled-components'
+import NavBar from '../NavBar'
+import SearchBarContainer from '../../containers/SearchBarContainer'
+
+const ScreenWrapper = styled.div`
+  margin-top: 55px;
+  @media (min-width: 1200px) {
+    width: 50%;
+  }
+`
 
 const StyledCourseOverview = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  grid-gap: 1rem;
-  overflow-y: scroll;
-
-  @media (min-width: 1024px) {
-    align-items: start;
-  }
+  grid-gap: 0;
 `
 export default class LangCourseScreen extends Component {
   static propTypes = {
@@ -34,23 +38,28 @@ export default class LangCourseScreen extends Component {
 
     if (!loading) {
       return (
-        <StyledCourseOverview>
-          {courses
-            .filter(course =>
-              Object.values(course).some(val => {
-                return (
-                  typeof val === 'string' && val.toLowerCase().includes(search)
-                )
-              })
-            )
-            .map((course, index) => (
-              <CourseCard
-                key={index}
-                course={course}
-                onClick={() => toggleBookmark(index)}
-              />
-            ))}
-        </StyledCourseOverview>
+        <ScreenWrapper>
+          <SearchBarContainer />
+          <StyledCourseOverview>
+            {courses
+              .filter(course =>
+                Object.values(course).some(val => {
+                  return (
+                    typeof val === 'string' &&
+                    val.toLowerCase().includes(search)
+                  )
+                })
+              )
+              .map((course, index) => (
+                <CourseCard
+                  key={index}
+                  course={course}
+                  onClick={() => toggleBookmark(index)}
+                />
+              ))}
+          </StyledCourseOverview>
+          <NavBar />
+        </ScreenWrapper>
       )
     }
   }

@@ -6,8 +6,14 @@ import list from '../icons/list.svg'
 import bookmark from '../icons/bookmark_filled.svg'
 
 const StyledSearchBar = styled.header`
-  grid-row: 1;
+  height: 50px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #fff;
   display: flex;
+<<<<<<< HEAD
   justify-content: space-around;
   align-items: center;
   background: #fff;
@@ -24,6 +30,18 @@ const StyledInput = styled.input`
   background: #fff;
   border-radius: 5px;
   border: solid, #bfbfbf;
+=======
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 6px 0 #ebedf0;
+`
+
+const StyledInput = styled.input`
+  width: 12rem;
+  padding: 3px;
+  border-radius: 5px;
+  border: solid 0.5px #ebedf0;
+>>>>>>> master
   outline: none !important;
 `
 

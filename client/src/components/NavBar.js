@@ -5,13 +5,22 @@ import list from '../icons/list.svg'
 import bookmark from '../icons/bookmark_filled.svg'
 
 const StyledNavBar = styled.footer`
-  grid-row: 4;
+  height: 50px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
   display: flex;
-  background: #f9423a;
+  background: #fff;
+  box-shadow: 0 -2px 6px 0 #ebedf0;
   justify-content: space-around;
   align-items: center;
+<<<<<<< HEAD
   @media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 1) {
     display: none;
+=======
+
+>>>>>>> master
   }
 `
 

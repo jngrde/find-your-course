@@ -44,7 +44,10 @@ export default class AdminLoginScreen extends Component {
       body: JSON.stringify(this.state),
       headers: {
         'Content-Type': 'application/json',
+<<<<<<< HEAD
         Authorization: 'Bearer',
+=======
+>>>>>>> master
       },
     })
       .then(res => {

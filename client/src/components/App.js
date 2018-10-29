@@ -8,11 +8,30 @@ import reducer from '../reducer'
 import styled from 'styled-components'
 import thunk from 'redux-thunk'
 import { saveCoursesToSessionStorage } from '../middlewares'
-import NavBar from './NavBar'
 import AdminScreenContainer from '../containers/AdminScreenContainer'
 import AdminLoginScreen from './screens/AdminLoginScreen'
 import { injectGlobal } from 'styled-components'
-import SearchBar from './../containers/SearchBarContainer'
+
+injectGlobal`
+* {
+  box-sizing: border-box;
+}
+html, body{
+  height: 100vh;
+}
+
+body{
+  margin:0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #314659;
+    background: #fff 
+}
+`
+
+const StyledApp = styled.div``
 
 const store = createStore(
   reducer,
@@ -26,7 +45,6 @@ class App extends Component {
       <Router>
         <Provider store={store}>
           <StyledApp>
-            <SearchBar />
             <Route exact path="/" component={LangCourseScreenContainer} />
             <Route
               path="/bookmarked"
@@ -34,7 +52,6 @@ class App extends Component {
             />
             <Route path="/login" component={AdminLoginScreen} />
             <Route path="/admin" component={AdminScreenContainer} />
-            <NavBar />
           </StyledApp>
         </Provider>
       </Router>
@@ -44,31 +61,3 @@ class App extends Component {
 
 export default App
 
-injectGlobal`
-* {
-  box-sizing: border-box;
-}
-html, body{
-  height: 100vh;
-}
-
-body{
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #314659;
-    background: #fff; 
-}
-`
-
-const StyledApp = styled.div`
-  width: 105%;
-  margin: -9px;
-  min-height: 100vh;
-  max-height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 50px 1fr auto 50px;
-  grid-gap: 0;
-`

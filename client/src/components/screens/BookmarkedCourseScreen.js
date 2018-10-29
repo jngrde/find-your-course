@@ -2,6 +2,15 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import CourseCard from '../CourseCard'
 import styled from 'styled-components'
+import NavBar from '../NavBar'
+import SearchBar from '../SearchBar'
+
+const ScreenWrapper = styled.div`
+  margin-top: 55px;
+  @media (min-width: 1200px) {
+    width: 50%;
+  }
+`
 
 const StyledCourseOverview = styled.div`
   align-items: start;
@@ -32,17 +41,21 @@ export default class BookmarkedCourseScreen extends Component {
 
     if (!loading) {
       return (
-        <StyledCourseOverview>
-          {courses
-            .filter(course => course.bookmarked === true)
-            .map((course, index) => (
-              <CourseCard
-                key={index}
-                course={course}
-                onClick={() => toggleBookmark(index)}
-              />
-            ))}
-        </StyledCourseOverview>
+        <ScreenWrapper>
+          <SearchBar />
+          <StyledCourseOverview>
+            {courses
+              .filter(course => course.bookmarked === true)
+              .map((course, index) => (
+                <CourseCard
+                  key={index}
+                  course={course}
+                  onClick={() => toggleBookmark(index)}
+                />
+              ))}
+          </StyledCourseOverview>
+          <NavBar />
+        </ScreenWrapper>
       )
     }
   }
