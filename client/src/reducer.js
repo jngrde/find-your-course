@@ -8,12 +8,14 @@ const initialState = {
 }
 
 export default function(state = initialState, action = {}) {
-  let index, term
+  let index, term, id
 
   switch (action.type) {
   case ACTIONS.TOGGLE_BOOKMARK:
-    index = action.payload.index
+    id = action.payload.id
+    console.log(id)
     return produce(state, draft => {
+      index = draft.courses.findIndex(course => course._id === id)
       draft.courses[index].bookmarked = !draft.courses[index].bookmarked
     })
   case ACTIONS.RECEIVE_COURSES:
