@@ -37,16 +37,16 @@ export default class AdminScreen extends Component {
     editable: PropTypes.bool,
   }
   componentDidMount() {
-    fetch('http://localhost:5000/checkToken')
+    /* fetch('http://localhost:5000/checkToken')
       .then(res => {
         if (res.status === 200) {
-          this.setState({ verified: true })
-          this.props.fetchCourses()
-        }
+          this.setState({ verified: true })*/
+    this.props.fetchCourses()
+    /*  }
       })
       .catch(() => {
         this.setState({ verified: false, redirect: true })
-      })
+      })*/
   }
 
   handleEdit = () => {
