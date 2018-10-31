@@ -13,7 +13,6 @@ export default function(state = initialState, action = {}) {
   switch (action.type) {
   case ACTIONS.TOGGLE_BOOKMARK:
     id = action.payload.id
-    console.log(id)
     return produce(state, draft => {
       index = draft.courses.findIndex(course => course._id === id)
       draft.courses[index].bookmarked = !draft.courses[index].bookmarked
