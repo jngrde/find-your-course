@@ -8,7 +8,7 @@ const mapStateToProps = state => ({
   search: state.search,
 })
 const mapDispatchToProps = {
-  toggleBookmark: index => toggleBookmark({ index }),
+  toggleBookmark: id => toggleBookmark({ id }),
   fetchCourses,
 }
 

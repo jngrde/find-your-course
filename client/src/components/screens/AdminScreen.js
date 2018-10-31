@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import AdminTable from '../AdminTable'
 import styled from 'styled-components'
-import { Redirect } from 'react-router-dom'
 
 const AdminPageWrapper = styled.div`
   display: flex;
@@ -55,30 +54,6 @@ export default class AdminScreen extends Component {
   }
   render() {
     const { index, courses, loading } = this.props
-<<<<<<< HEAD
-    const { verified, redirect, editable } = this.state
-    let view = <h1>Loading...</h1>
-    if (!verified) {
-      if (redirect) {
-        view = <Redirect to="/login" />
-      } else {
-        view = (
-          <div>
-            <StyledButton onClick={this.saveTable}>Speichern</StyledButton>
-            <StyledButton onClick={this.handleEdit}>Bearbeiten</StyledButton>
-            <AdminTable
-              key={index}
-              courses={courses}
-              loading={loading}
-              editable={editable}
-            />
-          </div>
-        )
-      }
-
-      return <React.Fragment>{view}</React.Fragment>
-    }
-=======
     const { editable } = this.state
     return (
       <AdminPageWrapper>
@@ -96,6 +71,5 @@ export default class AdminScreen extends Component {
         />
       </AdminPageWrapper>
     )
->>>>>>> master
   }
 }

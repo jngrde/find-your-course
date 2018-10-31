@@ -7,9 +7,6 @@ import SearchBarContainer from '../../containers/SearchBarContainer'
 
 const ScreenWrapper = styled.div`
   margin-top: 55px;
-  @media (min-width: 1200px) {
-    width: 50%;
-  }
 `
 
 const StyledCourseOverview = styled.div`
@@ -50,11 +47,11 @@ export default class LangCourseScreen extends Component {
                   )
                 })
               )
-              .map((course, index) => (
+              .map(course => (
                 <CourseCard
-                  key={index}
+                  key={course._id}
                   course={course}
-                  onClick={() => toggleBookmark(index)}
+                  onClick={() => toggleBookmark(course._id)}
                 />
               ))}
           </StyledCourseOverview>

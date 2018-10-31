@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 import list from '../icons/list.svg'
 import bookmark from '../icons/bookmark_filled.svg'
@@ -16,10 +16,21 @@ const StyledNavBar = styled.footer`
   justify-content: space-around;
   align-items: center;
 <<<<<<< HEAD
+<<<<<<< HEAD
   @media screen and (min-device-width: 1200px) and (max-device-width: 1600px) and (-webkit-min-device-pixel-ratio: 1) {
     display: none;
 =======
 
+>>>>>>> master
+=======
+`
+const activeClassName = 'nav-item-active'
+
+const NavItem = styled(NavLink).attrs({
+  activeClassName,
+})`
+  &.${activeClassName} {
+    border-bottom: solid 0.5px #f9423a;
 >>>>>>> master
   }
 `
@@ -28,12 +39,13 @@ export default class NavBar extends Component {
   render() {
     return (
       <StyledNavBar>
-        <Link to="/">
+        <NavItem to="/" exact activeClassName={activeClassName}>
           <img src={list} alt="List symbol" />
-        </Link>
-        <Link to="/bookmarked">
+        </NavItem>
+
+        <NavItem to="/bookmarked" activeClassName={activeClassName}>
           <img src={bookmark} alt="Bookmark symbol" />
-        </Link>
+        </NavItem>
       </StyledNavBar>
     )
   }

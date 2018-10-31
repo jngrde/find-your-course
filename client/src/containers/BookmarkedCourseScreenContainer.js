@@ -7,7 +7,7 @@ const mapStateToProps = state => ({
   loading: state.isLoading,
 })
 const mapDispatchToProps = {
-  toggleBookmark: index => toggleBookmark({ index }),
+  toggleBookmark: id => toggleBookmark({ id }),
   fetchCourses,
 }
 export default connect(

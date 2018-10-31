@@ -46,11 +46,11 @@ export default class BookmarkedCourseScreen extends Component {
           <StyledCourseOverview>
             {courses
               .filter(course => course.bookmarked === true)
-              .map((course, index) => (
+              .map(course => (
                 <CourseCard
-                  key={index}
+                  key={course._id}
                   course={course}
-                  onClick={() => toggleBookmark(index)}
+                  onClick={() => toggleBookmark(course._id)}
                 />
               ))}
           </StyledCourseOverview>
